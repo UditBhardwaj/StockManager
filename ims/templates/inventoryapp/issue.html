@@ -1,0 +1,43 @@
+{% extends "inventoryapp/navbar.html" %}
+{% block content%}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li> {{ message }} </li>
+    {% endfor %}
+</ul>
+{% endif %}
+<!--<div align ="center">-->
+<!--    <h1> Issue Item </h1>-->
+<!--    <br><br>-->
+<!--	<form method='POST' action=''>{% csrf_token %}-->
+<!--		{{form.as_p}}-->
+
+<!--        <input type="submit" value='Save'/>-->
+<!--    </form>-->
+    <form method='POST'>
+        {% csrf_token %}
+<!--        <label>name:</label><br>-->
+<!--        <input type="text"  name="name" value="{{queryset.item_name}}"><br>-->
+
+         <label>Issue By:</label><br>
+       <input type="text" id="issue" name="issue_by"><br>
+
+       <label>Issue quantity:</label><br>
+       <input type="integer" id="fname" name="issue_quantity"><br>
+
+        <label>Phone No:</label><br>
+       <input type="integer" id="pno" name="phone_number"><br>
+
+
+        <label>Price:</label><br>
+       <input type="integer"  name="price" value="{{queryset.price}}"><br>
+
+       <input type="submit" value='Submit'/>
+</form>
+
+
+</div>
+
+
+{% endblock %}

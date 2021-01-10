@@ -1,0 +1,44 @@
+{% extends "inventoryapp/navbar.html" %}
+{% block content%}
+{% load static %}
+<div class="display_table">
+<table class="table">
+        <thead>
+          <tr>
+            <th>COUNT</th>
+            <th>CATEGORY</th>
+            <th>ITEM NAME</th>
+            <th>QUANTITY IN STORE</th>
+              <th>Price</th>
+              <th>Timestamp</th>
+              <th>Last Updated</th>
+               <th>Update</th>
+               <th>Delete</th>
+              <th>Detail</th>
+          </tr>
+        </thead>
+      {% for instance in orders %}
+          <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{instance.category}}</td>
+            <td>{{instance.item_name}}</td>
+            <td>
+            {% if instance.quantity <= instance.reorder_level %}
+            <div style="background-color: red;">{{instance.quantity}}</div>
+            {% else %}{{instance.quantity}}
+            {% endif %}
+            </td>
+              <td>{{instance.price}}</td>
+              <td>{{instance.timestamp}}</td>
+              <td>{{instance.last_updated}}</td>
+              <td><a href="{% url 'update_items' instance.id %}">Update</a></td>
+              <td><a href="{% url 'delete_items' instance.id %}"><img src='{% static "img/rounded-151782555.jpg" %}' width=40 alt="something" ></a></td>
+               <td><a href="{% url 'stock_detail' instance.id %}">Detail</a></td>
+          </tr>
+      {% endfor %}
+    </table>
+</div>
+
+
+
+{% endblock %}

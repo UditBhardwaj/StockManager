@@ -1,0 +1,72 @@
+{% extends "inventoryapp/navbar.html" %}
+{% block content%}
+{% load static %}
+<!--{% load mathfilters %}-->
+
+<!--<div class="display_table">-->
+<!--<table class="table">-->
+<!--        <thead>-->
+
+<!--          <tr>-->
+<!--              <th>Count</th>-->
+<!--              <th>Item</th>-->
+<!--            <th>Quantity</th>-->
+<!--            <th>Customer</th>-->
+<!--              <th>Timestamp</th>-->
+<!--              <th>Mobile</th>-->
+<!--&lt;!&ndash;              <th>Price</th>&ndash;&gt;-->
+<!--          </tr>-->
+<!--        </thead>-->
+
+<!--      {% for instance in queryset %}-->
+<!--            <tr>-->
+<!--            <td>{{forloop.counter}}</td>-->
+<!--                <td>{{instance.name.item_name}}</td>-->
+<!--               <td>{{instance.issue_quantity}}</td>-->
+<!--            <td>{{instance.receive_by}}</td>-->
+<!--            <td>{{instance.timestamp}}</td>-->
+<!--              <td>{{instance.phone_number}}</td>-->
+<!--                <td>-->
+<!--&lt;!&ndash;                  {{instance.name.price }}&ndash;&gt;-->
+<!--              </td>-->
+<!--          </tr>-->
+<!--      {% endfor %}-->
+<!--    </table>-->
+<!--</div>-->
+
+<div class="display_table">
+<table class="table">
+        <thead>
+          <tr>
+            <th>COUNT</th>
+<!--            <th>CATEGORY</th>-->
+<!--            <th>ITEM NAME</th>-->
+            <th>Issue_QUANTITY </th>
+              <th>Customer name</th>
+              <th>Price</th>
+              <th>Phone Number</th>
+<!--              <th>Date</th>-->
+              <th>Delete</th>
+          </tr>
+        </thead>
+
+        {% for instance in queryset %}
+
+          <tr>
+            <td>{{forloop.counter}}</td>
+<!--            <td>{{instance.category}}</td>-->
+<!--            <td>{{instance.name}}</td>-->
+            <td>{{instance.issue_quantity}}</td>
+              <td>{{instance.issue_by}}</td>
+              <td>{{instance.total_price}}</td>
+              <td>{{instance.phone_number}}</td>
+<!--              <td>{{instance.created_at}}</td>-->
+              <td><a href="{% url 'delete_bill' instance.id %}"><img src='{% static "img/rounded-151782555.jpg" %}' width=40 alt="something" ></a></td>
+          </tr>
+
+    {% endfor %}
+    </table>
+</div>
+
+
+{% endblock %}

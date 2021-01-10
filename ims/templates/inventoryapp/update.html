@@ -1,0 +1,15 @@
+{% extends "inventoryapp/navbar.html" %}
+{% block content%}
+
+{% load static %}
+
+    <div align ="center">
+    <h1> Update Products </h1>
+    <br><br>
+	<form method='POST' action=''>{% csrf_token %}
+		{{form.as_p}}
+        <input type="submit" value='Save'/>
+    </form>
+    </div>
+
+{% endblock %}

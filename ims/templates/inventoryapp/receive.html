@@ -1,0 +1,14 @@
+{% extends "inventoryapp/navbar.html" %}
+{% block content%}
+
+<div align ="center">
+    <h1> Receive Item </h1>
+    <br><br>
+	<form method='POST' action=''>{% csrf_token %}
+		{{form.as_p}}
+        <input type="submit" value='Save'/>
+    </form>
+</div>
+
+
+{% endblock %}

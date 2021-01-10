@@ -1,0 +1,42 @@
+{% extends "inventoryapp/navbar.html" %}
+{% block content%}
+{% if messages %}
+        <ul class="messages">
+               {% for message in messages %}
+                     <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+               {% endfor %}
+       </ul>
+  {% endif %}
+<!--{% if message1 %}-->
+<!--{{message1}}-->
+<!--&lt;!&ndash;        <ul class="messages">&ndash;&gt;-->
+<!--&lt;!&ndash;               {% for message in message1 %}&ndash;&gt;-->
+<!--&lt;!&ndash;                     <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>&ndash;&gt;-->
+<!--&lt;!&ndash;               {% endfor %}&ndash;&gt;-->
+<!--&lt;!&ndash;       </ul>&ndash;&gt;-->
+<!--  {% endif %}-->
+
+        <br><br>
+        <div class="display_table">
+          <table class='table'>
+                  <tr>
+                    <th>ITEM NAME</th>
+                    <th>QUANTITY IN STORE</th>
+                    <th>LAST UPDATED</th>
+                    <th>REORDER LEVEL</th>
+                  </tr>
+                  <tr>
+                    <td>{{queryset.item_name}}</td>
+                    <td>{{queryset.quantity}}</td>
+                    <td>{{queryset.last_updated}}</td>
+                    <td>{{queryset.reorder_level}}</td>
+                  </tr>
+          </table>
+        </div>
+<br>
+<div align="center">
+<a href="{% url 'issue' queryset.id %}"><div class='btn btn-danger'>SELL THIS ITEM</div></a>
+<a href="{% url 'receive' queryset.id %}"><div class='btn btn-primary'>RECEIVE THIS ITEM</div></a>
+    </div>
+
+{% endblock %}
